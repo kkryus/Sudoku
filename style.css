@@ -1,0 +1,16 @@
+.jumbotron {
+  position: absolute;
+  top: 40%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  text-align:center;
+}
+
+.btn-xlarge {
+    padding: 12px 38px;
+    font-size: 35px; //change this to your desired size
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+}
