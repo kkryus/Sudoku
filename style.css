@@ -15,13 +15,6 @@
             border-radius: 8px;
 }
 
-
-input[readonly].classname{
-  background-color:transparent;
-  border: 0;
-  font-size: 1em;
-}
-
 .notUsed{
 	opacity: 0.6;
 }
