@@ -44,7 +44,8 @@
 			}
 			?>
 		</select></br></br>
-		<button type="button" class="btn btn-success btn-xlarge" onclick="window.location.href='game.html'">Play</button></br></br>
+		<button type="button" class="btn btn-success btn-xlarge" onclick="window.location.href='game.html'">Play</button>
+		<button type="button" class="btn btn-success btn-xlarge" onclick="window.location.href='index.html'">Cancel</button></br></br>
 				
 	</div>
 </div>
