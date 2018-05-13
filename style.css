@@ -14,3 +14,7 @@
        -moz-border-radius: 8px;
             border-radius: 8px;
 }
+
+.notUsed{
+	opacity: 0.6;
+}
