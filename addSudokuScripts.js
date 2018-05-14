@@ -11,6 +11,7 @@ function saveToFile()
 {
 	var fulfilled = document.getElementById("fulfilled").value;
 	var showed = document.getElementById("showed").value;
+	
 	$.ajax({
         url: "phpScripts/subPlayScripts.php",
 		data: { 
@@ -29,8 +30,7 @@ function saveToFile()
     });
 	sudokus = sudokus.split(",");
 	var fileName = sudokus.length - 2 + 1;
-	
-	
+		
 	$.post("phpScripts/saveSudoku.php", {
 		fulfilled:fulfilled,
 		showed:showed,
@@ -41,4 +41,6 @@ function saveToFile()
 				console.log(data);
 			}
 		});	
+		
+	document.getElementById("success-alert").style.display = "inline-block";
 }
