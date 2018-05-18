@@ -36,8 +36,10 @@ function undisableLevel(id)
 		if(sudokus[i]!= '.' && sudokus[i] != "..")
 		{
 			var puzzlesOption = document.createElement("option");
+			puzzlesOption.value = sudokus[i];
 			puzzlesOption.appendChild(document.createTextNode(sudokus[i]));
 			puzzlesSelect.appendChild(puzzlesOption);
 		}
 	}
 }
+

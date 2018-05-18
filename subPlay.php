@@ -8,9 +8,20 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="style.css">\
-	<script src="subPlayScripts.js"></script>
-	
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="subPlayScripts.js"></script>
+	<script>
+	function startGame()
+	{	
+		var playersName = document.getElementById("usr").value;
+		localStorage.setItem("playersName",playersName);
+		localStorage.setItem("currentLevel",currentLevel);
+		var e = document.getElementsByClassName("bootstrap-select")[0];
+		var strUser = e.options[e.selectedIndex].text;
+		localStorage.setItem("selectedSudoku", strUser);
+		window.location.href = 'game.html';
+	}
+	</script>
 </head>
 <body>
 
@@ -18,10 +29,7 @@
 
 <div class = "container">
 	<div class="jumbotron">
-	
-	
-	
-	
+
 	  <h1>Sudoku</h1>
 	  <hr>
 		<div class="form-group">
@@ -39,12 +47,13 @@
 			foreach($files as $file) {
 				if($file != '.' && $file != '..')
 				{
-					echo "<option value=\"1\">$file</option>";
+					echo "<option value=\"$file\">$file</option>";
 				}
 			}
 			?>
 		</select></br></br>
-		<button type="button" class="btn btn-success btn-xlarge" onclick="window.location.href='game.html'">Play</button></br></br>
+		<button type="button" id="playButton" class="btn btn-success btn-xlarge" onclick="startGame()">Play</button>
+		<button type="button" class="btn btn-success btn-xlarge" onclick="window.location.href='index.html'">Cancel</button></br></br>
 				
 	</div>
 </div>
