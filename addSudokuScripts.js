@@ -26,7 +26,6 @@ function saveToFile()
 			showed.push("0");
 		}
 	}
-	console.log(fulfilled);
 	
 	$.ajax({
         url: "phpScripts/subPlayScripts.php",
@@ -60,7 +59,6 @@ function saveToFile()
 		
 	document.getElementById("success-alert").style.display = "inline-block";
 }
-
 function addBrs()
 {
 	var brsElement = document.getElementById("brs");
