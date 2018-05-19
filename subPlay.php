@@ -17,8 +17,8 @@
 		localStorage.setItem("playersName",playersName);
 		localStorage.setItem("currentLevel",currentLevel);
 		var e = document.getElementsByClassName("bootstrap-select")[0];
-		var strUser = e.options[e.selectedIndex].text;
-		localStorage.setItem("selectedSudoku", strUser);
+		var game = e.options[e.selectedIndex].text;
+		localStorage.setItem("selectedSudoku", game);
 		window.location.href = 'game.html';
 	}
 	</script>
