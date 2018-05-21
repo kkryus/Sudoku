@@ -5,8 +5,65 @@ window.onload = function(e){
 	document.getElementById("welcomePlayer").innerHTML = "Welcome " + playersName;
 	document.getElementById("choices").innerHTML = "You chose " + currentLevel + " level sudoku, number " + selectedSudoku + ".";
 	readFromFile(currentLevel, selectedSudoku);
+	var gameType = localStorage.getItem("gameType");	
+	if(gameType == "loaded")
+	{
+		var storedValues = JSON.parse(localStorage.getItem("values"));
+		var storedDrafts = JSON.parse(localStorage.getItem("draftValues"));
+		var inputs = [];
+		var drafts = document.getElementsByClassName("draft");
+		
+		for(i= 0;i<81;i++)
+		{
+			inputs.push(document.getElementById(i));
+		}
+		for(i= 0;i<81;i++)
+		{
+			drafts[i].value = storedDrafts[i];
+			if(storedValues[i] != "0")
+			{
+				inputs[i].value = storedValues[i];
+			}
+		}
+	}
+	
 }
 
+function saveGame()
+{
+	localStorage.setItem("savedPlayer", localStorage.getItem("playersName"));
+	localStorage.setItem("savedLevel", localStorage.getItem("currentLevel"));
+	localStorage.setItem("savedNumber", localStorage.getItem("selectedSudoku"));
+	var inputValues = [];
+	for(i= 0;i<81;i++)
+	{
+		var value = document.getElementById(i).value;
+		if(value == "")
+		{
+			inputValues.push("0");
+		}
+		else
+		{
+			inputValues.push(value);
+		}	
+	}
+	localStorage.setItem("values", JSON.stringify(inputValues));
+	
+	var draftValues = [];
+	var drafts = document.getElementsByClassName("draft");
+	for(i=0;i<81;i++)
+	{
+		if(drafts[i].value == null)
+		{
+			draftValues.push("");
+		}
+		else
+		{
+			draftValues.push(drafts[i].value);
+		}
+	}
+	localStorage.setItem("draftValues", JSON.stringify(draftValues));
+}
 
 function checkInput(evt) {
     var charCode = (evt.which) ? evt.which : evt.keyCode;
@@ -22,7 +79,7 @@ function checkInput(evt) {
 } 
 
 function readFromFile(level, number)
-{
+{	
 	var sudokus;
 	$.ajax({
         url: "phpScripts/game.php",
@@ -45,15 +102,11 @@ function readFromFile(level, number)
 	fulfilled = [];
 	showed = [];
 
-
-	//var inputs = document.getElementsByTagName('input');
-
 	var inputs = [];
 	for(i= 0;i<81;i++)
 	{
 		inputs.push(document.getElementById(i));
 	}
-	
 	
 	for(i =0;i<81;i++)
 	{		
@@ -65,5 +118,4 @@ function readFromFile(level, number)
 			inputs[i].disabled = true;
 		}
 	}
-	console.log(showed);
 }
