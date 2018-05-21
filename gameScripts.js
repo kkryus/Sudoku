@@ -1,10 +1,18 @@
+var sudokus;
+var playersName;
+var currentLevel;
+var selectedSudoku;
+var points = 0;
+var solved = false;
 window.onload = function(e){ 
-    var playersName = localStorage.getItem("playersName");
-	var currentLevel = localStorage.getItem("currentLevel");
-	var selectedSudoku = localStorage.getItem("selectedSudoku");
+    playersName= localStorage.getItem("playersName");
+	currentLevel = localStorage.getItem("currentLevel");
+	selectedSudoku = localStorage.getItem("selectedSudoku");
 	document.getElementById("welcomePlayer").innerHTML = "Welcome " + playersName;
 	document.getElementById("choices").innerHTML = "You chose " + currentLevel + " level sudoku, number " + selectedSudoku + ".";
-	readFromFile(currentLevel, selectedSudoku);
+	
+	sudokus = readFromFile(currentLevel, selectedSudoku);
+	setBeginingState(sudokus);
 	var gameType = localStorage.getItem("gameType");	
 	if(gameType == "loaded")
 	{
@@ -25,15 +33,19 @@ window.onload = function(e){
 				inputs[i].value = storedValues[i];
 			}
 		}
+		points = parseFloat(localStorage.getItem("points"));
+		document.getElementById("points").innerHTML = "Points: " + Number((points).toFixed(2));
 	}
-	
 }
+
+
 
 function saveGame()
 {
-	localStorage.setItem("savedPlayer", localStorage.getItem("playersName"));
-	localStorage.setItem("savedLevel", localStorage.getItem("currentLevel"));
-	localStorage.setItem("savedNumber", localStorage.getItem("selectedSudoku"));
+	localStorage.setItem("savedPlayer", playersName);
+	localStorage.setItem("savedLevel", currentLevel);
+	localStorage.setItem("savedNumber", selectedSudoku);
+	localStorage.setItem("points", points);
 	var inputValues = [];
 	for(i= 0;i<81;i++)
 	{
@@ -78,6 +90,103 @@ function checkInput(evt) {
     return true;
 } 
 
+function clearSudoku()
+{
+	var drafts = document.getElementsByClassName("draft");
+	var inputs = [];
+	for(i= 0;i<81;i++)
+	{
+		drafts[i].value = "";
+		if(document.getElementById(i).disabled == false)
+		{
+			document.getElementById(i).value = "";
+		}
+	}
+	solved = false;
+	clearPoints();
+}
+
+function changePoints(amount)
+{
+	points += amount;
+	document.getElementById("points").innerHTML = "Points: " + Number((points).toFixed(2));
+}
+function clearPoints()
+{
+	points = 0;
+	document.getElementById("points").innerHTML = "Points: " + points;
+}
+
+function solveSudoku()
+{
+	var corrected = false;
+	for(i= 0;i<81;i++)
+	{
+		if(document.getElementById(i).value != sudokus[i].substring(0,1))
+		{
+			document.getElementById(i).value = sudokus[i].substring(0,1);
+			corrected = true;		
+		}
+	}
+	if(corrected)
+	{
+		addPointsByLevel(currentLevel, -10);
+		solved = true;
+	}
+	
+}
+
+function checkIfWon()
+{
+	var won = true;
+	for(i= 0;i<81;i++)
+	{
+		if(document.getElementById(i).value != sudokus[i].substring(0,1))
+		{
+			won = false;		
+		}
+	}
+	if(won)
+	{
+		if(!solved)
+		{
+			addPointsByLevel(currentLevel, 10);
+		}
+	}
+	else
+	{
+	}
+}
+
+function getAHint()
+{
+	for(i= 0;i<81;i++)
+	{
+		if(document.getElementById(i).value == "")
+		{
+			document.getElementById(i).value = sudokus[i].substring(0,1);
+			addPointsByLevel(currentLevel, -1);
+			break;
+		}
+	}
+}
+
+function addPointsByLevel(level, points)
+{
+	if(level == "easy")
+	{
+		changePoints(1.7 * points);
+	}
+	if(level == "medium")
+	{
+		changePoints(1.5 * points);
+	}
+	if(level == "hard")
+	{
+		changePoints(1.2 * points);
+	}
+}
+
 function readFromFile(level, number)
 {	
 	var sudokus;
@@ -98,10 +207,11 @@ function readFromFile(level, number)
             sudokus = data;
         }
     });
-	sudokus = sudokus.split(',');
-	fulfilled = [];
-	showed = [];
+	return sudokus.split(',');
+}
 
+function setBeginingState(sudokus)
+{
 	var inputs = [];
 	for(i= 0;i<81;i++)
 	{
@@ -110,8 +220,6 @@ function readFromFile(level, number)
 	
 	for(i =0;i<81;i++)
 	{		
-		fulfilled.push(sudokus[i].substring(0,1));
-		showed.push(sudokus[i].substring(1));
 		if(sudokus[i].substring(1) == "true")
 		{
 			inputs[i].value = sudokus[i].substring(0,1);
