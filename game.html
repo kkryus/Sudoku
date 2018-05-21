@@ -29,6 +29,11 @@
                     </li>
 					<li>
                         <a>
+                            <h3 id="choices">Points: </h3>
+                        </a>
+                    </li>
+					<li>
+                        <a>
                            <button type="button" class="btn btn-success btn-xlarge">Check</button>
                         </a>
                     </li>
@@ -46,8 +51,12 @@
 						<a>
 							<button type="button" class="btn btn-warning btn-xlarge">Solve</button>
 						</a>
+					</li>   
+					<li>
+						<a>
+							<button type="button" class="btn btn-success btn-xlarge"  onclick="saveGame()">Save</button>
+						</a>
 					</li>
-					<ul id="logout_sidebar_button" class="nav nav-sidebar">     
 					<li>
 						<a>
 							<button type="button" class="btn btn-danger btn-xlarge"  onclick="window.location.href='index.html'">Back</button>
@@ -65,117 +74,117 @@
 	<br /><br />
 		<div class="row">
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control up left" type="text" />
+				<input id="draft" class="form-control up left draft" type="text" />
 				<input id="0" class="form-control sudoku left" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control up" type="text" />
+				<input id="draft" class="form-control up draft" type="text" />
 				<input id="1" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control up right" type="text" />
+				<input id="draft" class="form-control up right draft" type="text" />
 				<input id="2" class="form-control sudoku right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control up" type="text" />
+				<input id="draft" class="form-control up draft" type="text" />
 				<input id="3" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control up" type="text" />
+				<input id="draft" class="form-control up draft" type="text" />
 				<input id="4" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control up right" type="text" />
+				<input id="draft" class="form-control up right draft" type="text" />
 				<input id="5" class="form-control sudoku right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control up" type="text" />
+				<input id="draft" class="form-control up draft" type="text" />
 				<input id="6" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control up" type="text" />
+				<input id="draft" class="form-control up draft" type="text" />
 				<input id="7" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control up right" type="text" />
+				<input id="draft" class="form-control up right draft" type="text" />
 				<input id="8" class="form-control sudoku right" type="text" onkeypress="return checkInput(event)" />
 			</div>
 		</div>
 		
 		<div class="row">
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control left" type="text" />
+				<input id="draft" class="form-control left draft" type="text" />
 				<input id="9" class="form-control sudoku left" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="10" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="11" class="form-control sudoku right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="12" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="13" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="14" class="form-control sudoku right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="15" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="16" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="17" class="form-control sudoku right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 		</div>
 		
 		<div class="row">
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control left" type="text" />
+				<input id="draft" class="form-control left draft" type="text" />
 				<input id="18" class="form-control sudoku bottom left" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="19" class="form-control sudoku bottom" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="20" class="form-control sudoku bottom right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="21" class="form-control sudoku bottom" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="22" class="form-control sudoku bottom" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="23" class="form-control sudoku bottom right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="24" class="form-control sudoku bottom" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="25" class="form-control sudoku bottom" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="26" class="form-control sudoku bottom right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 		</div>
@@ -183,117 +192,117 @@
 
 		<div class="row">
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control left" type="text" />
+				<input id="draft" class="form-control left draft" type="text" />
 				<input id="27" class="form-control sudoku left" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="28" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="29" class="form-control sudoku right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="30" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="31" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="32" class="form-control sudoku right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="33" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="34" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="35" class="form-control sudoku right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 		</div>
 		
 		<div class="row">
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control left" type="text" />
+				<input id="draft" class="form-control left draft" type="text" />
 				<input id="36" class="form-control sudoku left" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="37" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="38" class="form-control sudoku right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="39" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="40" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="41" class="form-control sudoku right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="42" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="43" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="44" class="form-control sudoku right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 		</div>
 		
 		<div class="row">
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control left" type="text" />
+				<input id="draft" class="form-control left draft" type="text" />
 				<input id="45" class="form-control sudoku bottom left" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="46" class="form-control sudoku bottom" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="47" class="form-control sudoku bottom right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="48" class="form-control sudoku bottom" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="49" class="form-control sudoku bottom" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="50" class="form-control sudoku bottom right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="51" class="form-control sudoku bottom" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="52" class="form-control sudoku bottom" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="53" class="form-control sudoku bottom right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 		</div>
@@ -301,117 +310,117 @@
 		
 		<div class="row">
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control left" type="text" />
+				<input id="draft" class="form-control left draft" type="text" />
 				<input id="54" class="form-control sudoku left" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="55" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="56" class="form-control sudoku right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="57" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="58" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="59" class="form-control sudoku right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="60" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="61" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="62" class="form-control sudoku right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 		</div>
 		
 		<div class="row">
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control left" type="text" />
+				<input id="draft" class="form-control left draft" type="text" />
 				<input id="63" class="form-control sudoku left" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="64" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="65" class="form-control sudoku right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="66" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="67" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="68" class="form-control sudoku right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="69" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="70" class="form-control sudoku" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="71" class="form-control sudoku right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 		</div>
 		
 		<div class="row">
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control left" type="text" />
+				<input id="draft" class="form-control left draft" type="text" />
 				<input id="72" class="form-control sudoku bottom left" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="73" class="form-control sudoku bottom" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="74" class="form-control sudoku bottom right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="75" class="form-control sudoku bottom" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="76" class="form-control sudoku bottom" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="77" class="form-control sudoku bottom right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="78" class="form-control sudoku bottom" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control" type="text" />
+				<input id="draft" class="form-control draft" type="text" />
 				<input id="79" class="form-control sudoku bottom" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 			<div class="col-xs-1-9">
-				<input id="draft" class="form-control right" type="text" />
+				<input id="draft" class="form-control right draft" type="text" />
 				<input id="80" class="form-control sudoku bottom right" type="text" onkeypress="return checkInput(event)"/>
 			</div>
 		</div>

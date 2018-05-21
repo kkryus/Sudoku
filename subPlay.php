@@ -19,6 +19,7 @@
 		var e = document.getElementsByClassName("bootstrap-select")[0];
 		var game = e.options[e.selectedIndex].text;
 		localStorage.setItem("selectedSudoku", game);
+		localStorage.setItem("gameType", "new");
 		window.location.href = 'game.html';
 	}
 	</script>
