@@ -4,7 +4,19 @@ var currentLevel;
 var selectedSudoku;
 var points = 0;
 var solved = false;
+var modal;
+var btn;
+var span;
+var amountOfHints = 0;
 window.onload = function(e){ 
+	modal = document.getElementById('myModal');
+
+	if (e.target == modal) {
+        modal.style.display = "none";
+    }
+	btn = document.getElementById("myBtn");
+	span = document.getElementsByClassName("close")[0];
+
     playersName= localStorage.getItem("playersName");
 	currentLevel = localStorage.getItem("currentLevel");
 	selectedSudoku = localStorage.getItem("selectedSudoku");
@@ -38,8 +50,14 @@ window.onload = function(e){
 	}
 }
 
-
-
+function showModal()
+{
+	 modal.style.display = "block";
+}
+function hideModal()
+{
+	 modal.style.display = "none";
+}
 function saveGame()
 {
 	localStorage.setItem("savedPlayer", playersName);
@@ -103,6 +121,7 @@ function clearSudoku()
 		}
 	}
 	solved = false;
+	amountOfHints = 0;
 	clearPoints();
 }
 
@@ -120,17 +139,13 @@ function clearPoints()
 function solveSudoku()
 {
 	var corrected = false;
-	for(i= 0;i<81;i++)
+	while(getAHint())
 	{
-		if(document.getElementById(i).value != sudokus[i].substring(0,1))
-		{
-			document.getElementById(i).value = sudokus[i].substring(0,1);
-			corrected = true;		
-		}
+		corrected = true;
 	}
 	if(corrected)
 	{
-		addPointsByLevel(currentLevel, -10);
+		addPointsByLevel(-10);
 		solved = true;
 	}
 	
@@ -147,14 +162,29 @@ function checkIfWon()
 		}
 	}
 	if(won)
-	{
+	{	
+		var tmp = 0;
+		
 		if(!solved)
 		{
-			addPointsByLevel(currentLevel, 10);
+			addPointsByLevel(10);
+			for(i= 0;i<81;i++)
+			{
+				if(document.getElementById(i).value == sudokus[i].substring(0,1) && sudokus[i].substring(1) != "true")
+				{
+					tmp++;
+				}
+			}
+			for(i =0;i<tmp - amountOfHints;i++)
+			{
+				addPointsByLevel(1);
+			}			
 		}
-	}
-	else
-	{
+		document.getElementsByClassName("modal-body")[0].innerHTML = "Congratulations " + playersName + "! You solved the sudoku!<br>\
+																		You achieved " + Number((points).toFixed(2)) + " points!";
+		modal.style.display = "block";
+		var audio = new Audio('winSound.mp3');
+		audio.play();		
 	}
 }
 
@@ -165,25 +195,45 @@ function getAHint()
 		if(document.getElementById(i).value == "")
 		{
 			document.getElementById(i).value = sudokus[i].substring(0,1);
-			addPointsByLevel(currentLevel, -1);
-			break;
+			amountOfHints++;
+			addPointsByLevel(-1);
+			return true;
 		}
 	}
+	return false;
 }
 
-function addPointsByLevel(level, points)
+function addPointsByLevel(points)
 {
-	if(level == "easy")
+	if(points >0)
 	{
-		changePoints(1.7 * points);
+		if(currentLevel == "easy")
+		{
+			changePoints(1.2 * points);
+		}
+		if(currentLevel == "medium")
+		{
+			changePoints(1.5 * points);
+		}
+		if(currentLevel == "hard")
+		{
+			changePoints(1.7 * points);
+		}
 	}
-	if(level == "medium")
+	else
 	{
-		changePoints(1.5 * points);
-	}
-	if(level == "hard")
-	{
-		changePoints(1.2 * points);
+		if(currentLevel == "easy")
+		{
+			changePoints(1.7 * points);
+		}
+		if(currentLevel == "medium")
+		{
+			changePoints(1.5 * points);
+		}
+		if(currentLevel == "hard")
+		{
+			changePoints(1.2 * points);
+		}
 	}
 }
 
@@ -227,3 +277,6 @@ function setBeginingState(sudokus)
 		}
 	}
 }
+
+
+
