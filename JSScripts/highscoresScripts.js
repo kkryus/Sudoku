@@ -25,7 +25,7 @@ window.onload = function() {
 	var highscores = getHighscores();
 	highscores = highscores.split("\n");
 	
-	for(i=0;i<=highscores.length;i++)
+	for(i=0;i<10;i++)
 	{
 		var score = highscores[i].split("|");
 		var table = document.getElementById("highscoresTable");
