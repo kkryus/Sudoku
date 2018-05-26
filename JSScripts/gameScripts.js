@@ -8,6 +8,7 @@ var modal;
 var btn;
 var span;
 var amountOfHints = 0;
+var checked = false;
 window.onload = function(e){ 
 	modal = document.getElementById('myModal');
 
@@ -121,6 +122,7 @@ function clearSudoku()
 		}
 	}
 	solved = false;
+	checked = false;
 	amountOfHints = 0;
 	clearPoints();
 }
@@ -161,10 +163,10 @@ function checkIfWon()
 			won = false;		
 		}
 	}
-	if(won)
+	if(won && !checked)
 	{	
 		var tmp = 0;
-		
+		checked = true;
 		if(!solved)
 		{
 			addPointsByLevel(10);
@@ -180,12 +182,62 @@ function checkIfWon()
 				addPointsByLevel(1);
 			}			
 		}
+		var scores = getHighscores();
+		scores = scores.split("\n");
+		for(i = 0;i<scores.length;i++)
+		{
+			var score = scores[i].split("|");
+			if(score[1] < points)
+			{
+				scores.splice(i, 0, playersName +"|"+Number((points).toFixed(2)));
+				break;
+			}
+		}
+		scores.length = 10;
+		saveScores(scores);
+		
 		document.getElementsByClassName("modal-body")[0].innerHTML = "Congratulations " + playersName + "! You solved the sudoku!<br>\
 																		You achieved " + Number((points).toFixed(2)) + " points!";
 		modal.style.display = "block";
 		var audio = new Audio('winSound.mp3');
 		audio.play();		
 	}
+}
+
+
+function getHighscores()
+{
+	var highscores;
+	
+	 $.ajax({
+        url: "phpScripts/highscores.php",
+		data: { 
+		},
+        type: 'GET',
+        cache: false,
+        timeout: 30000,
+		async: false,
+        error: function(){
+            return true;
+        },
+        success: function(data){ 
+            highscores = data;
+        }
+    });
+	return highscores;
+
+}
+
+
+function saveScores(arr)
+{
+	$.post("phpScripts/saveScores.php", {
+		arr:JSON.stringify(arr),
+		}, function(data) {
+			if (data != "") {
+				console.log(data);
+			}
+		});	
 }
 
 function getAHint()
