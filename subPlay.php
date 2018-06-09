@@ -10,19 +10,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
 	<script type="text/javascript" src="JSScripts/subPlayScripts.js"></script>
-	<script>
-	function startGame()
-	{	
-		var playersName = document.getElementById("usr").value;
-		localStorage.setItem("playersName",playersName);
-		localStorage.setItem("currentLevel",currentLevel);
-		var e = document.getElementsByClassName("bootstrap-select")[0];
-		var game = e.options[e.selectedIndex].text + ".txt";
-		localStorage.setItem("selectedSudoku", game);
-		localStorage.setItem("gameType", "new");
-		window.location.href = 'game.html';
-	}
-	</script>
 </head>
 <body>
 
