@@ -22,7 +22,7 @@ window.onload = function(e){
 	currentLevel = localStorage.getItem("currentLevel");
 	selectedSudoku = localStorage.getItem("selectedSudoku");
 	document.getElementById("welcomePlayer").innerHTML = "Welcome " + playersName;
-	document.getElementById("choices").innerHTML = "You chose " + currentLevel + " level sudoku, number " + selectedSudoku + ".";
+	document.getElementById("choices").innerHTML = "You chose " + currentLevel + " level sudoku, number " + selectedSudoku.slice(0,-4) + ".";
 	
 	sudokus = readFromFile(currentLevel, selectedSudoku);
 	setBeginingState(sudokus);

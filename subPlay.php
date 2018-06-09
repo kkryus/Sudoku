@@ -17,7 +17,7 @@
 		localStorage.setItem("playersName",playersName);
 		localStorage.setItem("currentLevel",currentLevel);
 		var e = document.getElementsByClassName("bootstrap-select")[0];
-		var game = e.options[e.selectedIndex].text;
+		var game = e.options[e.selectedIndex].text + ".txt";
 		localStorage.setItem("selectedSudoku", game);
 		localStorage.setItem("gameType", "new");
 		window.location.href = 'game.html';
@@ -48,7 +48,8 @@
 			foreach($files as $file) {
 				if($file != '.' && $file != '..')
 				{
-					echo "<option value=\"$file\">$file</option>";
+					$tmp = pathinfo($file, PATHINFO_FILENAME);
+					echo "<option value=\"$tmp\">$tmp</option>";
 				}
 			}
 			?>
