@@ -21,14 +21,8 @@ for ($i = 0; $i < 81; $i++) {
 	$myArray[] = $object;
 }
 $string = serialize($myArray);
-$fn= "../" . $gameFolder. "/" . $fileName;
+$fn= "../" . $gameFolder. "/" . $fileName . ".txt";
 $fh = fopen($fn, 'w');
 fwrite($fh, $string);
 fclose($fh);
-
-
-//$value = print_r($myArray, true);
-
-//$value = print_r($fulfilled, true) . "\r\n" . print_r($showed, true);
-//$myfile = file_put_contents("../" . $gameFolder. "/" . $fileName, $value.PHP_EOL , FILE_APPEND | LOCK_EX);
 ?>

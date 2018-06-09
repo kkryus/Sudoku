@@ -30,6 +30,7 @@ window.onload = function() {
 		var score = highscores[i].split("|");
 		var table = document.getElementById("highscoresTable");
 		var row = table.insertRow(-1);
+		row.style.display = "none";
 		var cell0 = row.insertCell(0);
 		var cell1 = row.insertCell(1);
 		var cell2 = row.insertCell(2);
@@ -38,4 +39,17 @@ window.onload = function() {
 		cell2.innerHTML = score[1];
 	}
 	
+	var showNextRow = function(){
+   var nextInvisibleRow = $('.highscoresTable tr').not(':visible').filter(':first');
+   if( nextInvisibleRow.length > 0 ){
+       nextInvisibleRow.fadeIn(500, showNextRow); 
+   }
+}
+
+$(function(){
+    showNextRow();
+});
+	
 };
+
+

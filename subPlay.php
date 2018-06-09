@@ -11,17 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
 	<script type="text/javascript" src="JSScripts/subPlayScripts.js"></script>
 	<script>
-	function startGame()
-	{	
-		var playersName = document.getElementById("usr").value;
-		localStorage.setItem("playersName",playersName);
-		localStorage.setItem("currentLevel",currentLevel);
-		var e = document.getElementsByClassName("bootstrap-select")[0];
-		var game = e.options[e.selectedIndex].text;
-		localStorage.setItem("selectedSudoku", game);
-		localStorage.setItem("gameType", "new");
-		window.location.href = 'game.html';
-	}
+	
 	</script>
 </head>
 <body>
@@ -48,7 +38,8 @@
 			foreach($files as $file) {
 				if($file != '.' && $file != '..')
 				{
-					echo "<option value=\"$file\">$file</option>";
+					$tmp = pathinfo($file, PATHINFO_FILENAME);
+					echo "<option value=\"$tmp\">$tmp</option>";
 				}
 			}
 			?>

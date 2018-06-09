@@ -21,8 +21,9 @@ window.onload = function(e){
     playersName= localStorage.getItem("playersName");
 	currentLevel = localStorage.getItem("currentLevel");
 	selectedSudoku = localStorage.getItem("selectedSudoku");
+	
 	document.getElementById("welcomePlayer").innerHTML = "Welcome " + playersName;
-	document.getElementById("choices").innerHTML = "You chose " + currentLevel + " level sudoku, number " + selectedSudoku + ".";
+	document.getElementById("choices").innerHTML = "You chose " + currentLevel + " level sudoku, number " + selectedSudoku.slice(0,-4) + ".";
 	
 	sudokus = readFromFile(currentLevel, selectedSudoku);
 	setBeginingState(sudokus);
@@ -31,6 +32,8 @@ window.onload = function(e){
 	{
 		var storedValues = JSON.parse(localStorage.getItem("values"));
 		var storedDrafts = JSON.parse(localStorage.getItem("draftValues"));
+		solved = localStorage.getItem("solved");
+		checked = localStorage.getItem("checked");
 		var inputs = [];
 		var drafts = document.getElementsByClassName("draft");
 		
@@ -65,6 +68,8 @@ function saveGame()
 	localStorage.setItem("savedLevel", currentLevel);
 	localStorage.setItem("savedNumber", selectedSudoku);
 	localStorage.setItem("points", points);
+	localStorage.setItem("solved", solved);
+	localStorage.setItem("checked", checked);
 	var inputValues = [];
 	for(i= 0;i<81;i++)
 	{
