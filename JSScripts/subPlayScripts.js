@@ -36,10 +36,23 @@ function undisableLevel(id)
 		if(sudokus[i]!= '.' && sudokus[i] != "..")
 		{
 			var puzzlesOption = document.createElement("option");
-			puzzlesOption.value = sudokus[i];
-			puzzlesOption.appendChild(document.createTextNode(sudokus[i]));
+			puzzlesOption.value = sudokus[i].slice(0, -4);
+			puzzlesOption.appendChild(document.createTextNode(sudokus[i].slice(0, -4)));
 			puzzlesSelect.appendChild(puzzlesOption);
 		}
 	}
+}
+
+
+function startGame()
+{	
+	var playersName = document.getElementById("usr").value;
+	localStorage.setItem("playersName",playersName);
+	localStorage.setItem("currentLevel",currentLevel);
+	var e = document.getElementsByClassName("bootstrap-select")[0];
+	var game = e.options[e.selectedIndex].text + ".txt";
+	localStorage.setItem("selectedSudoku", game);
+	localStorage.setItem("gameType", "new");
+	window.location.href = 'game.html';
 }
 
