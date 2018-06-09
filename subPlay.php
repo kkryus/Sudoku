@@ -10,9 +10,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
 	<script type="text/javascript" src="JSScripts/subPlayScripts.js"></script>
-	<script>
-	
-	</script>
 </head>
 <body>
 
